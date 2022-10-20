@@ -24,7 +24,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   getAudioContext().suspend();
   button = createButton('start');
-  button.position(-100,-100);
+  button.position(100,100);
   button.mousePressed(start);
   started=false;
   
