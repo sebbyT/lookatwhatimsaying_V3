@@ -10,21 +10,25 @@ var button;
 var started;
 
 var capture;
-
+function mousePressed(){
+  start();
+}
+function start(){
+  if (started==false){
+  userStartAudio();
+  started=true;
+  vidplay();
+  }
+  }
 function setup() {
   createCanvas(windowWidth, windowHeight);
   getAudioContext().suspend();
   button = createButton('start');
-  button.position(windowWidth/2, 50);
-  //button.mousePressed(userStartAudio);
-  started = false;
-  
-  function start(){
-  userStartAudio();
-  started=true;
-  }
-  
+  button.position(-100,-100);
   button.mousePressed(start);
+  started=false;
+  
+  //button.mousePressed(start);
   
   mic = new p5.AudioIn();
   mic.start();
@@ -32,7 +36,7 @@ function setup() {
   fft.setInput(mic);
   vol = mic.getLevel();
   //frameRate(10);
-  background(0);
+  //background(0);
   
   prevTreb=createVector(0,0);
   prevBass=createVector(0,0);
@@ -137,10 +141,4 @@ function setup() {
   a+=0.1/10;
   
 }
-
-//push();
-//  translate(width,0);
-//  scale(-1, 1);
-//  image(capture, 0, 0, windowWidth, windowHeight);
-//  pop();
 }
